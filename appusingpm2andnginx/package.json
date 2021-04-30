@@ -1,0 +1,16 @@
+{
+  "name": "assignment2",
+  "version": "1.0.0",
+  "description": "This is assignment 2 application and deploy with pm2 and nginx",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manikantesh Kilaru",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

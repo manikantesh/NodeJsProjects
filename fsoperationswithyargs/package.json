@@ -1,0 +1,20 @@
+{
+  "name": "fsoperations",
+  "version": "1.0.0",
+  "description": "Fs Operations With Yargs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs"
+  ],
+  "author": "Mani",
+  "license": "ISC",
+  "dependencies": {
+    "current-line": "^1.0.1",
+    "yargs": "^12.0.5"
+  }
+}
