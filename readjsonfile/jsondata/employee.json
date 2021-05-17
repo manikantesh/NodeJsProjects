@@ -4,19 +4,19 @@
             "id":1,
             "name":"test1",
             "details":"must Details1",
-            "projectId":1
+            "projectId":[1,2]
         },
         {
             "id":2,
             "name":"test2",
             "details":"must Details2",
-            "projectId":3
+            "projectId":[3]
         },
         {
             "id":3,
             "name":"test3",
             "details":"must Details3",
-            "projectId":3
+            "projectId":[3]
         }
     ]
 }
