@@ -1,8 +1,8 @@
 const express = require('express');
 const request = require('request');
-var mongoose = require('mongoose');
 const fs = require('fs');
 const { Console } = require('console');
+const fetch = require("node-fetch");
 const app = express();
 
 const PORT = 3000;
@@ -49,17 +49,15 @@ function readProject(idx){
             var project = JSON.parse(data);
             for(var s in project.Projects){
                 if(project.Projects[s].projectId == idx){
-                    //console.log(project.Projects[s]);
                     var st = project.Projects[s];
-                    //console.log(st);
                     return st;
                 }
             }
     })
 }
 
-app.get('/getemployeedetails',(req,res,next)=>{
-    fs.readFile('./jsondata/employee.json','utf8',(err,data)=>{
+app.get('/getemployeedetails', (req,res,next)=>{
+    fs.readFile('./jsondata/employee.json','utf8', async (err,data)=>{
         if(err){
             res.send('Error');
         }else{
@@ -75,8 +73,7 @@ app.get('/getemployeedetails',(req,res,next)=>{
                     var projectData = employees.Employees[s].projectId;
                     for(var k in projectData){                       
                         var idx = projectData[k];
-                        var st = readProject(idx);
-                        //await(1000)
+                        var st = await fetch('http://localhost:3000/project/' + idx ).then(response => response.json());
                         jsont.push(st);
                     }
                     element.project = jsont;
@@ -84,7 +81,6 @@ app.get('/getemployeedetails',(req,res,next)=>{
                 json.push(element);
             }
         res.send(json);
-           // const requiredRecord = employees.find(employees => employees.id === idx)
         }
     })
 })
