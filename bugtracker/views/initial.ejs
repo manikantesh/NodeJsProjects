@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#dataTable').DataTable();
+            })
+        </script>
+    </head>
+</html>
+<body>
+    <form action="/bug/add" method="post">
+        Title: <input type="text" name="title"><br/>
+        Assignee: <input type="text" name="assignee"><br/>
+        Description: <input type="text" name="description"><br/>
+        <button type="submit">Add</button>
+    </form>
+    <table id="dataTable">
+        <tr>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Assignee</th>
+            <th>Created Time</th>
+            <th>SLA Date</th>
+            <th>Days Left</th>
+            <th>Closed Time</th>
+            <th></th>
+        </tr>
+        <% for(let i=0; i<data.length; i++) { %>
+            <tr style="background-color: <%= data[i].color %>;">
+                <td><%= data[i].status %></td>
+                <td><%= data[i].title %></td>
+                <td><%= data[i].assignee %></td>
+                <td><%= data[i].createTimeStr %></td>
+                <td><%= data[i].slaTimeStr %></td>
+                <td><%= data[i].closeTimeStr %></td>
+                <td><a href="/bug/closebug/<%= data[i]._id %>">
+                    CLOSE
+                </a></td>
+            </tr>
+            <% } %>
+    </table>
+</body>
